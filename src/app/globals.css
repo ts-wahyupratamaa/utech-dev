@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-/* @plugin 'tailwindcss-animate'; */
-/* @import 'tw-animate-css'; */
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -84,22 +81,6 @@
   transform: scale(1.2);
 }
 
-.faq-question {
-  transition: all 0.3s ease;
-}
-
-.faq-question:hover {
-  background-color: rgba(249, 115, 22, 0.05);
-}
-
-.faq-item.active {
-  border-color: #f97316;
-}
-
-.faq-answer {
-  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-}
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -172,6 +153,10 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;

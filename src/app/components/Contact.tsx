@@ -1,4 +1,4 @@
-export default function ContactSection() {
+export default function Contact() {
   return (
     <section id='contact' className='py-20 bg-[#0B0E17] text-white'>
       <div className='max-w-4xl mx-auto px-6'>
@@ -28,14 +28,14 @@ export default function ContactSection() {
               Ready to Elevate Your Business with Next-Gen Digital Solutions?
             </h2>
             <p className='text-lg text-gray-400 mb-10 max-w-2xl mx-auto'>
-              Let's take your ideas to the next level! Join with us and
+              Let&apos;s take your ideas to the next level! Join with us and
               transform your vision into a powerful digital product.
             </p>
 
             <div className='flex justify-center'>
               <a
-                href='mailto:UtechSH@gmail.com'
-                className='bg-primary-orange hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 inline-block text-lg'
+                href='mailto:utechsh@gmail.com'
+                className='bg-primary-orange hover:bg-orange-600 text-white font-semibold py-2.5 md:py-3 px-6 md:px-8 rounded-full transition duration-300 inline-block text-sm md:text-lg'
               >
                 Contact Us
               </a>

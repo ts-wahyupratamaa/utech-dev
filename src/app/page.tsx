@@ -1,20 +1,20 @@
-import HeroSection from '@/app/components/HeroSection';
-import ServicesProcess from '@/app/components/ServicesProcess';
-import ServicesShowcase from '@/app/components/ServicesShowcase';
-import AboutSection from '@/app/components/AboutSection';
-import FAQSection from '@/app/components/FAQSection';
-import ContactSection from '@/app/components/ContactSection';
+import Hero from '@/app/components/Hero';
+import Services from '@/app/components/Services';
+import Showcase from '@/app/components/Showcase';
+import About from '@/app/components/About';
+import Faq from '@/app/components/Faq';
+import Contact from '@/app/components/Contact';
 import Footer from '@/app/components/Footer';
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <ServicesProcess />
-      <ServicesShowcase />
-      <AboutSection />
-      <ContactSection />
-      <FAQSection />
+      <Hero />
+      <Services />
+      <Showcase />
+      <About />
+      <Contact />
+      <Faq />
       <Footer />
     </>
   );

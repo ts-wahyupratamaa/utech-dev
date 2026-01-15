@@ -1,6 +1,7 @@
 'use client';
 
-import { ElementType, memo } from 'react';
+import { memo } from 'react';
+import type { JSX } from 'react';
 import { AnimatePresence, motion, MotionProps, Variants } from 'motion/react';
 
 import { cn } from '@/lib/utils';
@@ -44,9 +45,9 @@ interface TextAnimateProps extends MotionProps {
    */
   variants?: Variants;
   /**
-   * The element type to render
+   * The element tag to render
    */
-  as?: ElementType;
+  as?: keyof JSX.IntrinsicElements;
   /**
    * How to split the text ("text", "word", "character")
    */
@@ -317,7 +318,9 @@ const TextAnimateBase = ({
   accessible = true,
   ...props
 }: TextAnimateProps) => {
-  const MotionComponent = motion.create(Component);
+  const MotionComponent =
+    (motion as unknown as Record<string, typeof motion.p>)[Component] ??
+    motion.p;
 
   let segments: string[] = [];
   switch (by) {
