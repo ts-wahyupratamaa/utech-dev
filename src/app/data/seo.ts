@@ -22,6 +22,6 @@ export const siteMeta: SiteMeta = {
     'Malang',
   ],
   locale: 'id_ID',
-  ogImage: '/porto1.png',
+  ogImage: '/icon.png',
   twitterHandle: '@utechsh',
 };
