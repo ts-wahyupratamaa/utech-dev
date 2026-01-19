@@ -50,7 +50,7 @@ export default function Footer() {
           <div className='space-y-3'>
             <p className='text-sm flex items-center'>
               <i className='fas fa-phone mr-3 text-primary-orange'></i>
-              +62 xxx-xxxx-xxxx
+            +62 896-9948-1497
             </p>
 
             <p className='text-sm flex items-center'>
