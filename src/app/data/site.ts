@@ -22,7 +22,7 @@ export const heroContent: HeroContent = {
   title: 'Empowering Your Business with Intelligent IT Services',
   subtitle:
     'End-to-end technology support to keep your operations competitive in the digital era.',
-  ctaPrimary: { label: 'JOIN WITH US', to: 'contact' },
+  ctaPrimary: { label: 'JOIN WITH US', to: 'technical-questions' },
   ctaSecondary: { label: 'VIEW MORE', to: 'about' },
 };
 
