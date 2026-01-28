@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import useContent from '@/app/hooks/useContent';
 import type { FaqItem } from '@/app/data/types';
+import { buildWhatsAppLink } from '@/app/lib/whatsapp';
 
 function renderFaq(item: FaqItem) {
   switch (item.kind) {
@@ -49,7 +50,7 @@ function renderFaq(item: FaqItem) {
                   className='h-full rounded-full shadow-[0_0_10px_rgba(255,102,0,0.35)] transition-all duration-500 ease-out'
                   style={{
                     width: `${Math.round(
-                      (timeline.maxWeeks / item.maxWeeks) * 100
+                      (timeline.maxWeeks / item.maxWeeks) * 100,
                     )}%`,
                     backgroundColor: '#ff6600',
                     minWidth: '2px',
@@ -94,8 +95,22 @@ function renderFaq(item: FaqItem) {
 
 export default function Faq() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
   const { faqItems, faqIntro } = useContent();
   const faqs: FaqItem[] = faqItems;
+  const waLink = useMemo(() => {
+    const fullName = [firstName, lastName].filter(Boolean).join(' ');
+    const lines = [
+      'Halo Utech, saya ingin konsultasi.',
+      fullName ? `Nama: ${fullName}` : null,
+      email ? `Email: ${email}` : null,
+      company ? `Perusahaan: ${company}` : null,
+    ].filter(Boolean);
+    return buildWhatsAppLink(lines.join('\n'));
+  }, [firstName, lastName, email, company]);
 
   return (
     <section
@@ -168,21 +183,64 @@ export default function Faq() {
           <aside className='bg-custom-card-bg p-8 rounded-2xl border border-gray-700 sticky top-24 h-fit'>
             <div className='text-center mb-6'>
               <div className='text-primary-orange text-4xl mb-4'>
-                <i className='fas fa-life-ring'></i>
+                <i className='fas fa-headset'></i>
               </div>
               <h3 className='text-2xl font-bold text-gray-200 mb-2'>
-                Still no luck?
+                Konsultasi via WhatsApp
               </h3>
               <p className='text-gray-400'>
-                Contact us and we’ll help you directly.
+                Isi data singkat, lalu kami arahkan solusi terbaik untuk bisnis
+                Anda.
               </p>
             </div>
 
+            <div className='space-y-4'>
+              <label className='block text-sm text-gray-300'>
+                Nama Depan
+                <input
+                  value={firstName}
+                  onChange={(event) => setFirstName(event.target.value)}
+                  placeholder='Nama Depan*'
+                  className='mt-2 w-full rounded-xl bg-[#12182d] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-orange/60'
+                />
+              </label>
+              <label className='block text-sm text-gray-300'>
+                Nama Belakang
+                <input
+                  value={lastName}
+                  onChange={(event) => setLastName(event.target.value)}
+                  placeholder='Nama Belakang*'
+                  className='mt-2 w-full rounded-xl bg-[#12182d] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-orange/60'
+                />
+              </label>
+              <label className='block text-sm text-gray-300'>
+                Email
+                <input
+                  type='email'
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder='Email*'
+                  className='mt-2 w-full rounded-xl bg-[#12182d] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-orange/60'
+                />
+              </label>
+              <label className='block text-sm text-gray-300'>
+                Nama Perusahaan
+                <input
+                  value={company}
+                  onChange={(event) => setCompany(event.target.value)}
+                  placeholder='Nama Perusahaan*'
+                  className='mt-2 w-full rounded-xl bg-[#12182d] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-orange/60'
+                />
+              </label>
+            </div>
+
             <a
-              href='#contact'
-              className='block w-full bg-primary-orange text-white py-2.5 md:py-3 rounded-lg font-semibold text-sm md:text-base text-center hover:bg-orange-600 transition'
+              href={waLink}
+              target='_blank'
+              rel='noreferrer'
+              className='mt-6 block w-full bg-[#FF6B2C] text-black py-2.5 md:py-3 rounded-lg font-semibold text-sm md:text-base text-center transition'
             >
-              {faqIntro.ctaLabel}
+              HUBUNGI VIA WHATSAPP
             </a>
           </aside>
         </div>

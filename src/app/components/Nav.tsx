@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { MenuIcon, type MenuIconHandle } from '@/components/ui/menu';
 import useContent from '@/app/hooks/useContent';
 import ScrollLink from '@/app/components/ScrollLink';
+import { buildWhatsAppLink } from '@/app/lib/whatsapp';
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,8 +39,9 @@ export default function Nav() {
 
         <div className='hidden md:block'>
           <a
-            href='mailto:utechsh@gmail.com'
+            href={buildWhatsAppLink('Halo Utech, saya ingin konsultasi.')}
             target='_blank'
+            rel='noreferrer'
             className='bg-[#FF6B2C] text-black text-xs sm:text-sm font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full transition duration-300 shadow-lg shadow-orange-500/20'
           >
             BOOK NOW
@@ -83,7 +85,9 @@ export default function Nav() {
               </ScrollLink>
             ))}
             <a
-              href='mailto:utechsh@gmail.com'
+              href={buildWhatsAppLink('Halo Utech, saya ingin konsultasi.')}
+              target='_blank'
+              rel='noreferrer'
               className='bg-[#FF6B2C] text-black text-xs sm:text-sm font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full transition duration-300 shadow-lg shadow-orange-500/20 my-4'
             >
               BOOK NOW

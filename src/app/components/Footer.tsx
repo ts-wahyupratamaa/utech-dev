@@ -2,6 +2,7 @@
 
 import ScrollLink from '@/app/components/ScrollLink';
 import { navLinks } from '@/app/lib/content';
+import { buildWhatsAppLink } from '@/app/lib/whatsapp';
 
 export default function Footer() {
   return (
@@ -21,7 +22,9 @@ export default function Footer() {
           </p>
 
           <a
-            href='mailto:utechsh@gmail.com'
+            href={buildWhatsAppLink('Halo Utech, saya ingin konsultasi.')}
+            target='_blank'
+            rel='noreferrer'
             className='bg-[#FF6B2C] text-black py-2.5 md:py-3 px-6 md:px-8 rounded-full inline-block font-semibold text-sm md:text-base shadow-lg shadow-orange-500/20'
           >
             Get started
@@ -53,10 +56,15 @@ export default function Footer() {
             +62 896-9948-1497
             </p>
 
-            <p className='text-sm flex items-center'>
-              <i className='fas fa-envelope mr-3 text-primary-orange'></i>
-              utechsh@gmail.com
-            </p>
+            <a
+              href={buildWhatsAppLink('Halo Utech, saya ingin konsultasi.')}
+              target='_blank'
+              rel='noreferrer'
+              className='text-sm flex items-center hover:text-primary-orange transition'
+            >
+              <i className='fab fa-whatsapp mr-3 text-primary-orange'></i>
+              WhatsApp: +62 896-9948-1497
+            </a>
 
             <p className='text-sm flex items-center'>
               <i className='fas fa-map-marker-alt mr-3 text-primary-orange'></i>
